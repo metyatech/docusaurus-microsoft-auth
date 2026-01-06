@@ -2,6 +2,8 @@
 
 Docusaurus v3 向けの Microsoft アカウント認証プラグインです。Microsoft Entra ID (旧 Azure AD) を利用して、MSAL (Microsoft Authentication Library) をベースにサイト全体へサインイン UI とガード機能を提供します。
 
+## セットアップ
+
 ```bash
 git clone https://github.com/<your-account>/docusaurus-microsoft-auth.git
 cd docusaurus-microsoft-auth
@@ -9,7 +11,7 @@ npm install
 npm run build
 ```
 
-ビルドすると `dist/` に ESM 出力と型定義が生成されます。npm で配布する際は `npm publish` を実行してください。
+ビルドすると `dist/` に ESM 出力と型定義が生成されます。
 
 ## 特長
 
@@ -99,7 +101,7 @@ export default function ProtectedDocs() {
 }
 ```
 
-## 環境変数
+## 環境変数/設定
 
 以下の値をビルド時に渡すことで、Microsoft Entra ID のテナントとアプリケーションを変更できます。
 
@@ -110,15 +112,16 @@ export default function ProtectedDocs() {
 | `DOCUSAURUS_MICROSOFT_REDIRECT_PATH` | `/auth/callback` | 認証リダイレクト先のパス。 |
 | `DOCUSAURUS_MICROSOFT_PROTECTED_ROUTES` | 空配列 | `,` 区切りで保護ルートを指定。 |
 
-## ビルド
+## 開発コマンド
 
-リポジトリ内で開発する場合は、以下のコマンドでトランスパイルします。
+- `npm run build`: ビルド
+
+## 公開/デプロイ
 
 ```bash
-npm run build
+npm publish
 ```
 
 ## ライセンス
 
 MIT
-
