@@ -17,7 +17,7 @@ export {
 export default function microsoftAuthPlugin(): Plugin<void> {
   const dirname = __dirname;
   return {
-    name: '@kodai-yamamoto-siw/docusaurus-microsoft-auth',
+    name: '@metyatech/docusaurus-microsoft-auth',
     getThemePath() {
       return path.resolve(dirname, 'theme');
     },

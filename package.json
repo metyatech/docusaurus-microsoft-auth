@@ -1,5 +1,5 @@
 {
-  "name": "@kodai-yamamoto-siw/docusaurus-microsoft-auth",
+  "name": "@metyatech/docusaurus-microsoft-auth",
   "version": "0.1.1",
   "description": "Microsoft Entra ID (Azure AD) authentication integration for Docusaurus sites using MSAL.",
   "main": "dist/index.js",

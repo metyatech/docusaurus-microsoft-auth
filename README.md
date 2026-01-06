@@ -1,4 +1,4 @@
-# @kodai-yamamoto-siw/docusaurus-microsoft-auth
+# @metyatech/docusaurus-microsoft-auth
 
 Docusaurus v3 向けの Microsoft アカウント認証プラグインです。Microsoft Entra ID (旧 Azure AD) を利用して、MSAL (Microsoft Authentication Library) をベースにサイト全体へサインイン UI とガード機能を提供します。
 
@@ -25,7 +25,7 @@ npm run build
 ```jsonc
 {
 	"dependencies": {
-		"@kodai-yamamoto-siw/docusaurus-microsoft-auth": "workspace:*"
+		"@metyatech/docusaurus-microsoft-auth": "workspace:*"
 	}
 }
 ```
@@ -33,7 +33,7 @@ npm run build
 リポジトリ外から npm registry 経由でインストールする場合は、公開後に利用できるようになります。
 
 ```bash
-npm install @kodai-yamamoto-siw/docusaurus-microsoft-auth
+npm install @metyatech/docusaurus-microsoft-auth
 ```
 
 ## Docusaurus への組み込み
@@ -55,7 +55,7 @@ const config: Config = {
 		},
 	},
 	plugins: [
-		'@kodai-yamamoto-siw/docusaurus-microsoft-auth',
+		'@metyatech/docusaurus-microsoft-auth',
 	],
 };
 
@@ -87,7 +87,7 @@ const config: Config = {
 - `resolveAuthConfig`: Docusaurus customFields からプラグイン用設定を生成するヘルパー。
 
 ```tsx
-import {AuthGuard, useAccount} from '@kodai-yamamoto-siw/docusaurus-microsoft-auth';
+import {AuthGuard, useAccount} from '@metyatech/docusaurus-microsoft-auth';
 
 export default function ProtectedDocs() {
 	const account = useAccount();
