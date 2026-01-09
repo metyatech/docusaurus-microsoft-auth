@@ -22,12 +22,12 @@ Build outputs (JS + types) are generated under `dist/`.
 
 ## Installation
 
-In a local workspace, add it to your site's `package.json`.
+For local development, add it to your site's `package.json` using a file path.
 
 ```jsonc
 {
   "dependencies": {
-    "@metyatech/docusaurus-microsoft-auth": "workspace:*"
+    "@metyatech/docusaurus-microsoft-auth": "file:../docusaurus-microsoft-auth"
   }
 }
 ```
@@ -111,6 +111,21 @@ export default function ProtectedDocs() {
 ## Development Commands
 
 - `npm run build`: build
+
+## AGENTS.md
+
+This project uses `agent-rules` and `agent-rules-tools` as git submodules.
+After cloning, initialize submodules:
+
+```bash
+git submodule update --init --recursive
+```
+
+Update `agent-ruleset.json` as needed and regenerate:
+
+```bash
+node agent-rules-tools/tools/compose-agents.cjs
+```
 
 ## Release/Deploy
 
