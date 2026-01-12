@@ -22,12 +22,12 @@ Build outputs (JS + types) are generated under `dist/`.
 
 ## Installation
 
-In a local workspace, add it to your site's `package.json`.
+For local development, add it to your site's `package.json` using a file path.
 
 ```jsonc
 {
   "dependencies": {
-    "@metyatech/docusaurus-microsoft-auth": "workspace:*"
+    "@metyatech/docusaurus-microsoft-auth": "file:../docusaurus-microsoft-auth"
   }
 }
 ```
@@ -50,7 +50,7 @@ const config: Config = {
   // ...snip...
   customFields: {
     auth: {
-      tenantId: process.env.DOCUSUARUS_MICROSOFT_TENANT_ID ?? 'common',
+      tenantId: process.env.DOCUSAURUS_MICROSOFT_TENANT_ID ?? 'common',
       clientId:
         process.env.DOCUSAURUS_MICROSOFT_CLIENT_ID ??
         '00000000-0000-0000-0000-000000000000',
@@ -101,16 +101,31 @@ export default function ProtectedDocs() {
 
 ## Environment Variables/Settings
 
-| Name | Default | Description |
-| --- | --- | --- |
-| `DOCUSAURUS_MICROSOFT_TENANT_ID` | `common` | Entra tenant ID (`common` for multi-tenant). |
-| `DOCUSAURUS_MICROSOFT_CLIENT_ID` | `00000000-0000-0000-0000-000000000000` | Azure AD application (client) ID. |
-| `DOCUSAURUS_MICROSOFT_REDIRECT_PATH` | `/auth/callback` | Redirect path. |
-| `DOCUSAURUS_MICROSOFT_PROTECTED_ROUTES` | empty | Comma-separated protected routes. |
+| Name                                    | Default                                | Description                                  |
+| --------------------------------------- | -------------------------------------- | -------------------------------------------- |
+| `DOCUSAURUS_MICROSOFT_TENANT_ID`        | `common`                               | Entra tenant ID (`common` for multi-tenant). |
+| `DOCUSAURUS_MICROSOFT_CLIENT_ID`        | `00000000-0000-0000-0000-000000000000` | Azure AD application (client) ID.            |
+| `DOCUSAURUS_MICROSOFT_REDIRECT_PATH`    | `/auth/callback`                       | Redirect path.                               |
+| `DOCUSAURUS_MICROSOFT_PROTECTED_ROUTES` | empty                                  | Comma-separated protected routes.            |
 
 ## Development Commands
 
 - `npm run build`: build
+
+## AGENTS.md
+
+This project uses `agent-rules` and `agent-rules-tools` as git submodules.
+After cloning, initialize submodules:
+
+```bash
+git submodule update --init --recursive
+```
+
+Update `agent-ruleset.json` as needed and regenerate:
+
+```bash
+node agent-rules-tools/tools/compose-agents.cjs
+```
 
 ## Release/Deploy
 
