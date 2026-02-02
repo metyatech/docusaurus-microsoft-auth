@@ -136,3 +136,12 @@ npm publish
 ## License
 
 MIT
+
+## Overview
+This repository contains the docusaurus-microsoft-auth project.
+
+## Development Commands
+- Build: `npm run build`
+- Test: `Not configured (no test script in package.json).`
+- Lint: `Not configured (no lint script in package.json).`
+
