@@ -36,5 +36,6 @@ export const createLoginRequest = (config: EnabledAuthConfig): RedirectRequest =
 });
 
 export const createLogoutRequest = (config: EnabledAuthConfig): EndSessionRequest => ({
-  postLogoutRedirectUri: config.postLogoutRedirectUri ?? config.redirectUri ?? window.location.origin,
+  postLogoutRedirectUri:
+    config.postLogoutRedirectUri ?? config.redirectUri ?? window.location.origin,
 });

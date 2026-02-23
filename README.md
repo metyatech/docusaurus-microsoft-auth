@@ -27,8 +27,8 @@ For local development, add it to your site's `package.json` using a file path.
 ```jsonc
 {
   "dependencies": {
-    "@metyatech/docusaurus-microsoft-auth": "file:../docusaurus-microsoft-auth"
-  }
+    "@metyatech/docusaurus-microsoft-auth": "file:../docusaurus-microsoft-auth",
+  },
 }
 ```
 
@@ -44,7 +44,7 @@ Register the plugin and set required `customFields` in `docusaurus.config.ts`.
 
 ```ts
 // docusaurus.config.ts
-import type {Config} from '@docusaurus/types';
+import type { Config } from '@docusaurus/types';
 
 const config: Config = {
   // ...snip...
@@ -52,8 +52,7 @@ const config: Config = {
     auth: {
       tenantId: process.env.DOCUSAURUS_MICROSOFT_TENANT_ID ?? 'common',
       clientId:
-        process.env.DOCUSAURUS_MICROSOFT_CLIENT_ID ??
-        '00000000-0000-0000-0000-000000000000',
+        process.env.DOCUSAURUS_MICROSOFT_CLIENT_ID ?? '00000000-0000-0000-0000-000000000000',
       redirectPath: '/auth/callback',
       protectedRoutes: ['/docs/protected'],
     },
@@ -71,7 +70,7 @@ To add an account menu to the navbar, define a `custom-auth-account` navbar item
 const config: Config = {
   themeConfig: {
     navbar: {
-      items: [{type: 'custom-auth-account', position: 'right'}],
+      items: [{ type: 'custom-auth-account', position: 'right' }],
     },
   },
 };
@@ -87,7 +86,7 @@ Main exports include:
 - `resolveAuthConfig`: helper to build config from Docusaurus `customFields`
 
 ```tsx
-import {AuthGuard, useAccount} from '@metyatech/docusaurus-microsoft-auth';
+import { AuthGuard, useAccount } from '@metyatech/docusaurus-microsoft-auth';
 
 export default function ProtectedDocs() {
   const account = useAccount();
@@ -110,7 +109,12 @@ export default function ProtectedDocs() {
 
 ## Development Commands
 
-- `npm run build`: build
+- `npm run build`: compile TypeScript to `dist/`
+- `npm run typecheck`: type-check without emitting output
+- `npm run lint`: run ESLint on `src/`
+- `npm run format`: auto-format source files with Prettier
+- `npm run format:check`: verify formatting (CI mode)
+- `npm run verify`: run the full check suite (format, lint, typecheck, build)
 
 ## AGENTS.md
 
@@ -136,12 +140,3 @@ npm publish
 ## License
 
 MIT
-
-## Overview
-This repository contains the docusaurus-microsoft-auth project.
-
-## Development Commands
-- Build: `npm run build`
-- Test: `Not configured (no test script in package.json).`
-- Lint: `Not configured (no lint script in package.json).`
-

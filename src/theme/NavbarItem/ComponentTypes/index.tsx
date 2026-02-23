@@ -12,6 +12,7 @@ import SearchNavbarItem from '@theme-original/NavbarItem/SearchNavbarItem';
 
 import CustomAuthAccountNavbarItem from '../CustomAuthAccount';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Docusaurus theme components have heterogeneous props
 type ComponentTypesMap = Record<string, ComponentType<any>>;
 
 const ComponentTypes: ComponentTypesMap = {

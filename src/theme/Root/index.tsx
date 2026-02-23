@@ -5,13 +5,21 @@ import type { Props } from '@theme/Root';
 import type { IPublicClientApplication } from '@azure/msal-browser';
 import { MsalProvider } from '@azure/msal-react';
 
-import type { AuthConfig, AuthEnvironment, DisabledAuthConfig, EnabledAuthConfig } from '../../client/authConfig';
+import type {
+  AuthConfig,
+  AuthEnvironment,
+  DisabledAuthConfig,
+  EnabledAuthConfig,
+} from '../../client/authConfig';
 import { resolveAuthConfig } from '../../client/authConfig';
 import { getMsalInstance } from '../../client/msalClient';
 import AuthGuard from '../../client/components/AuthGuard';
 import LoadingScreen from '../../client/components/LoadingScreen';
 
-const ConfigurationErrorScreen: React.FC<{ config: AuthConfig; message?: string | null }> = ({ config, message }) => {
+const ConfigurationErrorScreen: React.FC<{ config: AuthConfig; message?: string | null }> = ({
+  config,
+  message,
+}) => {
   const displayMessage = (() => {
     if (config.enabled) {
       return message ?? '認証の初期化に失敗しました。';
@@ -36,13 +44,16 @@ const ConfigurationErrorScreen: React.FC<{ config: AuthConfig; message?: string 
         style={{
           maxWidth: '560px',
           width: '100%',
-          background: 'color-mix(in srgb, var(--ifm-card-background-color, #ffffff) 88%, rgba(255, 255, 255, 0.7))',
+          background:
+            'color-mix(in srgb, var(--ifm-card-background-color, #ffffff) 88%, rgba(255, 255, 255, 0.7))',
           borderRadius: '1.25rem',
           padding: '2.5rem 2rem',
           boxShadow: '0 18px 40px rgba(15, 23, 42, 0.16)',
         }}
       >
-        <h1 style={{ fontSize: '1.65rem', marginBottom: '1.25rem', fontWeight: 700 }}>認証設定が必要です</h1>
+        <h1 style={{ fontSize: '1.65rem', marginBottom: '1.25rem', fontWeight: 700 }}>
+          認証設定が必要です
+        </h1>
         <p style={{ lineHeight: 1.7, marginBottom: '1.5rem' }}>{displayMessage}</p>
         <p style={{ lineHeight: 1.7, marginBottom: '1.5rem' }}>
           Azure ポータルでアプリ登録を作成し、以下の環境変数を設定してください。
@@ -61,7 +72,8 @@ const ConfigurationErrorScreen: React.FC<{ config: AuthConfig; message?: string 
 DOCUSAURUS_MICROSOFT_TENANT_ID=<ディレクトリ (テナント) ID>
 DOCUSAURUS_MICROSOFT_REDIRECT_URI=<https://example.com/javascript-course-docs/>`}</pre>
         <p style={{ marginTop: '1.5rem', lineHeight: 1.6 }}>
-          ローカル開発時は <code>.env</code> ファイルを作成し、ビルド／デプロイ環境でも同じ変数を設定してください。
+          ローカル開発時は <code>.env</code>{' '}
+          ファイルを作成し、ビルド／デプロイ環境でも同じ変数を設定してください。
         </p>
       </div>
     </div>
@@ -73,7 +85,8 @@ const getRuntimeEnv = (): AuthEnvironment => {
     return {};
   }
 
-  const runtime = (window as typeof window & { __DOCUSAURUS_RUNTIME_ENV__?: AuthEnvironment }).__DOCUSAURUS_RUNTIME_ENV__;
+  const runtime = (window as typeof window & { __DOCUSAURUS_RUNTIME_ENV__?: AuthEnvironment })
+    .__DOCUSAURUS_RUNTIME_ENV__;
   return runtime ?? {};
 };
 

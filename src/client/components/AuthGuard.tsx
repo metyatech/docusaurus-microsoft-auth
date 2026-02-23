@@ -22,7 +22,7 @@ const extractTenantLabel = (authority: string): string | undefined => {
       .map((segment) => segment.trim())
       .filter(Boolean);
     return segments[segments.length - 1];
-  } catch (error) {
+  } catch {
     const fallback = authority
       .split('/')
       .map((segment) => segment.trim())
@@ -51,7 +51,10 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children, config }) => {
 
   React.useEffect(() => {
     const callbackId = instance.addEventCallback((event: EventMessage) => {
-      if (event.eventType === EventType.LOGIN_SUCCESS || event.eventType === EventType.ACQUIRE_TOKEN_SUCCESS) {
+      if (
+        event.eventType === EventType.LOGIN_SUCCESS ||
+        event.eventType === EventType.ACQUIRE_TOKEN_SUCCESS
+      ) {
         const account = (event.payload as { account?: AccountInfo } | undefined)?.account;
         if (account) {
           instance.setActiveAccount(account);
@@ -60,10 +63,16 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children, config }) => {
         setIsSigningIn(false);
       }
 
-      if (event.eventType === EventType.LOGIN_FAILURE || event.eventType === EventType.ACQUIRE_TOKEN_FAILURE) {
-        const error = event.error; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+      if (
+        event.eventType === EventType.LOGIN_FAILURE ||
+        event.eventType === EventType.ACQUIRE_TOKEN_FAILURE
+      ) {
+        const error = event.error;
         const message =
-          error && typeof error === 'object' && 'message' in error && typeof (error as { message?: unknown }).message === 'string'
+          error &&
+          typeof error === 'object' &&
+          'message' in error &&
+          typeof (error as { message?: unknown }).message === 'string'
             ? (error as { message: string }).message
             : error
               ? String(error)
@@ -123,7 +132,8 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children, config }) => {
 
   const tenantLabel = React.useMemo(() => extractTenantLabel(config.authority), [config.authority]);
 
-  const isLoading = inProgress === InteractionStatus.Startup || inProgress === InteractionStatus.HandleRedirect;
+  const isLoading =
+    inProgress === InteractionStatus.Startup || inProgress === InteractionStatus.HandleRedirect;
   if (isLoading) {
     return <LoadingScreen message="サインインを確認しています…" />;
   }

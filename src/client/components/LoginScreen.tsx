@@ -20,7 +20,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onSignIn, isSigningIn, error,
         Microsoft Teams アカウントでサインインして、このサイトの教材にアクセスしてください。
       </p>
       <button className={styles.button} onClick={onSignIn} disabled={isSigningIn} type="button">
-        <span className={styles.buttonIcon} aria-hidden>🔐</span>
+        <span className={styles.buttonIcon} aria-hidden>
+          🔐
+        </span>
         {isSigningIn ? 'サインインを準備しています…' : 'Microsoft でサインイン'}
       </button>
       {tenantHint ? (

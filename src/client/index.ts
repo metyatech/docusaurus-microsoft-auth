@@ -14,8 +14,4 @@ export {
   type AuthEnvironment,
 } from './authConfig';
 
-export {
-  getMsalInstance,
-  createLoginRequest,
-  createLogoutRequest,
-} from './msalClient';
+export { getMsalInstance, createLoginRequest, createLogoutRequest } from './msalClient';

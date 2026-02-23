@@ -48,14 +48,17 @@ const parseScopes = (value?: string): string[] => {
   return scopes.length > 0 ? scopes : DEFAULT_SCOPES;
 };
 
-const extract = (env: AuthEnvironment, key: keyof AuthEnvironment): string | undefined => coerceEnv(env[key]);
+const extract = (env: AuthEnvironment, key: keyof AuthEnvironment): string | undefined =>
+  coerceEnv(env[key]);
 
 export const resolveAuthConfig = (env: AuthEnvironment): AuthConfig => {
   const clientId = extract(env, 'DOCUSAURUS_MICROSOFT_CLIENT_ID');
   const tenantId = extract(env, 'DOCUSAURUS_MICROSOFT_TENANT_ID');
-  const authorityHost = extract(env, 'DOCUSAURUS_MICROSOFT_AUTHORITY_HOST') ?? 'https://login.microsoftonline.com';
+  const authorityHost =
+    extract(env, 'DOCUSAURUS_MICROSOFT_AUTHORITY_HOST') ?? 'https://login.microsoftonline.com';
   const redirectUri = extract(env, 'DOCUSAURUS_MICROSOFT_REDIRECT_URI');
-  const postLogoutRedirectUri = extract(env, 'DOCUSAURUS_MICROSOFT_POST_LOGOUT_REDIRECT_URI') ?? redirectUri;
+  const postLogoutRedirectUri =
+    extract(env, 'DOCUSAURUS_MICROSOFT_POST_LOGOUT_REDIRECT_URI') ?? redirectUri;
   const scopes = parseScopes(extract(env, 'DOCUSAURUS_MICROSOFT_SCOPES'));
 
   if (!clientId) {

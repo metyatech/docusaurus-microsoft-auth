@@ -1,12 +1,13 @@
 import path from 'path';
 import type { Plugin } from '@docusaurus/types';
 
-export type { AuthEnvironment, AuthConfig, EnabledAuthConfig, DisabledAuthConfig } from './client/authConfig';
-export {
-  resolveAuthConfig,
-  buildMsalConfiguration,
-  DEFAULT_SCOPES,
+export type {
+  AuthEnvironment,
+  AuthConfig,
+  EnabledAuthConfig,
+  DisabledAuthConfig,
 } from './client/authConfig';
+export { resolveAuthConfig, buildMsalConfiguration, DEFAULT_SCOPES } from './client/authConfig';
 export { getMsalInstance, createLoginRequest, createLogoutRequest } from './client/msalClient';
 export {
   AuthAccountProvider,
